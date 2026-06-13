@@ -1,115 +1,127 @@
-﻿# Aplikasi Blog - Sistem Manajemen Konten (CMS)
+﻿# Platform Blog - Content Management System (CMS)
 
-**Nama:** Aldza Salwatul Aisy  
+**Pengembang:** Aldza Salwatul Aisy  
 **NIM:** 240605110228  
-**Mata Kuliah:** Pemrograman Web  
-**Universitas:** UIN Maulana Malik Ibrahim Malang
+**Mata Kuliah:** Pemrograman Aplikasi Web  
+**Institusi:** UIN Maulana Malik Ibrahim Malang  
 
 ---
 
-## Deskripsi Aplikasi
+## Ringkasan Proyek
 
-Aplikasi Blog adalah sistem manajemen konten (CMS) berbasis web yang dibangun menggunakan framework Laravel. Aplikasi ini terdiri dari dua bagian utama:
+Project ini merupakan sebuah sistem manajemen konten (CMS) berbasis website untuk mengelola web blog yang dirancang menggunakan framework Laravel. Sistem ini memisahkan hak akses dan fungsionalitas menjadi dua bagian utama:
 
-1. **Halaman CMS (Administrator)** — Halaman pengelolaan konten yang hanya dapat diakses oleh penulis yang sudah login. Fitur yang tersedia meliputi pengelolaan artikel, penulis, dan kategori artikel (CRUD).
-2. **Halaman Publik (Pengunjung)** — Halaman yang dapat diakses oleh siapa saja tanpa perlu login. Menampilkan lima artikel terbaru, widget kategori artikel, dan halaman detail artikel beserta artikel terkait.
+1. **Dashboard CMS (Sisi Administrator)** — Area backend khusus yang mewajibkan proses autentikasi (login) bagi penulis. Di halaman ini, admin atau penulis memiliki kendali penuh untuk melakukan operasi CRUD (Create, Read, Update, Delete) pada manajemen data artikel, biodata penulis, serta pengelompokan kategori.
+2. **Portal Publik (Sisi Pengunjung)** — Halaman depan yang bersifat terbuka untuk khalayak umum tanpa restriksi login. Halaman ini menyajikan kompilasi 5 postingan artikel paling mutakhir, komponen widget filter kategori, serta halaman khusus untuk membaca detail artikel lengkap dengan rekomendasi konten terkait.
 
 ---
 
-## Teknologi yang Digunakan
+## Spesifikasi Teknologi
 
+Konten dan sistem web ini berjalan di atas ekosistem teknologi berikut:
 - PHP 8.2
-- Laravel 12
-- MySQL
-- Bootstrap 5
-- XAMPP
+- Framework Laravel 12
+- Database MySQL
+- Bootstrap 5 (Front-end Framework)
+- XAMPP Developer Environment
 
 ---
 
-## Langkah-langkah Menjalankan Aplikasi Secara Lokal
+## Panduan Instalasi dan Deployment Lokal
 
-### Prasyarat
+### Kebutuhan Sistem
+Pastikan perangkat lokal Anda telah terpasang software pendukung berikut sebelum memulai instalasi:
+- XAMPP Control Panel (termasuk PHP 8.2 & MySQL Server)
+- Composer Package Manager
+- Git CLI
 
-- XAMPP (PHP 8.2, MySQL)
-- Composer
-- Git
+### Prosedur Pemasangan
 
-### Instalasi
+**1. Pengunduhan Repositori Project**
 
-**1. Clone repositori**
+Buka terminal atau Git Bash, lalu jalankan perintah cloning dan masuk ke direktori kerja utama:
 
-```
+`ash
 git clone https://github.com/aldza267/aplikasi-blog-240605110228.git
 cd aplikasi-blog-240605110228
-```
+`
 
-**2. Install dependencies**
+**2. Pemasangan Package Dependencies**
 
-```
+Unduh seluruh pustaka framework yang dibutuhkan menggunakan Composer:
+
+`ash
 composer install
-```
+`
 
-**3. Salin file konfigurasi**
+**3. Inisialisasi Environment File**
 
-```
+Duplikat file konfigurasi bawaan, kemudian generate security key aplikasi Anda:
+
+`ash
 cp .env.example .env
 php artisan key:generate
-```
+`
 
-**4. Konfigurasi database**
+**4. Penyelarasan Konfigurasi Basis Data**
 
-Buka file .env dan sesuaikan:
+Akses file .env menggunakan kode editor pilihan Anda (seperti VS Code), lalu sesuaikan baris konfigurasi database berikut:
 
-```
+`
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=db_blog
 DB_USERNAME=root
 DB_PASSWORD=
-```
+`
 
-**5. Jalankan migrasi**
+**5. Inisialisasi Database via phpMyAdmin**
 
-```
+Buka kontrol panel phpMyAdmin Anda di browser, buat database baru dengan nama db_blog, kemudian lakukan proses import file db_blog.sql yang berada di dalam folder root project ini.
+
+**6. Eksekusi Skema Migrasi**
+
+Sinkronkan struktur tabel sistem dengan menjalankan perintah database migration:
+
+`ash
 php artisan migrate
-```
+`
 
-**6. Buat symbolic link storage**
+**7. Menghubungkan Direktori Media (Storage Link)**
 
-```
+Buat tautan simbolis agar aset gambar atau foto profil penulis yang diunggah dapat diakses oleh publik:
+
+`ash
 php artisan storage:link
-```
+`
 
-**7. Jalankan development server**
+**8. Menjalankan Server Lokal**
 
-```
+Aktifkan local development server Laravel dengan mengetikkan perintah:
+
+`ash
 php artisan serve
-```
+`
 
-**8. Buka browser**
+**9. Akses Aplikasi**
 
-Akses http://localhost:8000
-
-### Akun Login Default
-
-| Username | Password |
-|----------|----------|
-| admin    | password |
+Buka browser kesayangan Anda dan kunjungi alamat URL: http://localhost:8000
 
 ---
 
-## Struktur Fitur
+## Kredensial Login Administrator
 
-### CMS (Login Required)
+Gunakan akun di bawah ini untuk menguji fungsionalitas menu backend CMS:
 
-- Login & Logout
-- Kelola Artikel (Tambah, Edit, Hapus)
-- Kelola Penulis (Tambah, Edit, Hapus)
-- Kelola Kategori Artikel (Tambah, Edit, Hapus)
+| Email / Username | Password |
+|------------------|----------|
+| aldzaaisy@blog.com | admin123 |
 
-### Halaman Publik
+---
 
-- Halaman utama — 5 artikel terbaru + widget kategori
-- Filter artikel berdasarkan kategori
-- Halaman detail artikel + artikel terkait
+## Dokumentasi Video Demonstrasi
+
+Seluruh alur jalannya sistem mulai dari manajemen data admin, posting artikel, hingga pengujian filter di halaman utama dapat Anda saksikan melalui tautan video berikut:
+
+👉 [Link Video yt Demonstrasi](https://youtu.be/mujrOn4cXrA?si=nfhOTWAGwJNwgbR4)
