@@ -41,10 +41,10 @@ Pastikan perangkat lokal Anda telah terpasang software pendukung berikut sebelum
 
 Buka terminal atau Git Bash, lalu jalankan perintah cloning dan masuk ke direktori kerja utama:
 
-`ash
+```bash
 git clone https://github.com/aldza267/aplikasi-blog-240605110228.git
 cd aplikasi-blog-240605110228
-`
+```
 
 **2. Pemasangan Package Dependencies**
 
